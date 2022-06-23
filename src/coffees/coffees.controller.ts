@@ -8,33 +8,36 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { CoffeesService } from './coffees.service';
 
 @Controller('coffees')
 export class CoffeesController {
+  constructor(private readonly conffeeService: CoffeesService) {}
+
   @Get()
   findAll(@Query() paginationQuery) {
     const { limit, offset } = paginationQuery;
 
-    return `This section returns all coffes. Limit: ${limit}, offset ${offset}`;
+    return this.conffeeService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `This action return #${id} coffee`;
+    return this.conffeeService.findOne(id);
   }
 
   @Post()
   create(@Body() body) {
-    return body;
+    return this.conffeeService.create(body);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() body) {
-    return `This action update #${id} coffee`;
+    return this.conffeeService.update(id, body);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `This action removes #${id} coffee`;
+    return this.conffeeService.remove(id);
   }
 }
