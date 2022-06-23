@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
-import { CreateCoffeDto } from './dto/create-coffe.dto';
+import { CreateCoffeeDto } from './dto/create-coffe.dto';
 import { UpdateCoffeDto } from './dto/update-coffe.dto';
 
 @Controller('coffees')
@@ -29,7 +29,7 @@ export class CoffeesController {
   }
 
   @Post()
-  create(@Body() createCoffeDto: CreateCoffeDto) {
+  create(@Body() createCoffeDto: CreateCoffeeDto) {
     return this.conffeeService.create(createCoffeDto);
   }
 
