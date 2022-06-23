@@ -12,10 +12,10 @@ import {
 @Controller('coffees')
 export class CoffeesController {
   @Get()
-  findAll(@Query() paginatedQuery) {
-    const { limit, offset } = paginatedQuery;
+  findAll(@Query() paginationQuery) {
+    const { limit, offset } = paginationQuery;
 
-    return `This section returns all coffes. With Limit: ${limit} and offset ${offset}`;
+    return `This section returns all coffes. Limit: ${limit}, offset ${offset}`;
   }
 
   @Get(':id')
